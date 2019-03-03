@@ -1,3 +1,20 @@
+;; Stuff taken from https://github.com/purcell/emacs.d
+
+;; Produce backtraces when errors occur
+(setq debug-on-error t)
+
+(let ((minver "24.4"))
+  (when (version< emacs-version minver)
+    (error "Your Emacs is too old -- this config requires v%s or higher" minver)))
+(when (version< emacs-version "25.1")
+  (message "Your Emacs is old, and some functionality in this config will be disabled. Please upgrade if possible."))
+
+;; (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+;; (require 'init-benchmarking) ;; Measure startup time
+
+(defconst *spell-check-support-enabled* nil) ;; Enable with t if you prefer
+(defconst *is-a-mac* (eq system-type 'darwin))
+
 ;; packages
 (when (>= emacs-major-version 24)
   (require 'package)
@@ -39,6 +56,8 @@
 (global-set-key (kbd "C-x g") 'magit-status)
 (add-hook 'magit-mode-hook 'visual-line-mode)
 
+(add-hook 'after-init-hook 'global-company-mode)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -49,7 +68,7 @@
     ("274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default)))
  '(package-selected-packages
    (quote
-    (magit distinguished-theme spacemacs-theme darktooth-theme darkmine-theme dark-mint-theme dark-krystal-theme darcula-theme cyberpunk-theme alect-themes bubbleberry-theme color-theme-sanityinc-solarized color-theme-solarized color-theme-sanityinc-tomorrow afternoon-theme darkburn-theme soothe-theme badger-theme zenburn-theme auctex-latexmk auctex dracula-theme))))
+    (company magit distinguished-theme spacemacs-theme darktooth-theme darkmine-theme dark-mint-theme dark-krystal-theme darcula-theme cyberpunk-theme alect-themes bubbleberry-theme color-theme-sanityinc-solarized color-theme-solarized color-theme-sanityinc-tomorrow afternoon-theme darkburn-theme soothe-theme badger-theme zenburn-theme auctex-latexmk auctex dracula-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
