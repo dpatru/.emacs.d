@@ -30,7 +30,7 @@
 (auctex-latexmk-setup)
 (add-hook 'LaTeX-mode-hook #'visual-line-mode)
 
-;;; show TOC (document structure) with C-=
+;;; show TOC (document structure) with C-c =
 ;;; from https://tex.stackexchange.com/a/245250
 (require 'reftex)
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex) ; with AUCTeX LaTeX mode
