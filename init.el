@@ -9,6 +9,7 @@
 (when (version< emacs-version "25.1")
   (message "Your Emacs is old, and some functionality in this config will be disabled. Please upgrade if possible."))
 
+(add-to-list 'load-path "~/.emacs.d/site-lisp")
 ;; (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 ;; (require 'init-benchmarking) ;; Measure startup time
 
@@ -22,6 +23,12 @@
   (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
   )
 
+;; from https://raw.githubusercontent.com/renormalist/emacs-pod-mode/master/pod-mode.el
+(require 'pod-mode)
+(add-to-list 'auto-mode-alist '("\\.pod$" . pod-mode))
+(add-hook 'pod-mode-hook 'font-lock-mode)
+
+;; install markdown-mode manually using https://jblevins.org/projects/markdown-mode/
 
 (load-theme 'sanityinc-tomorrow-bright t)
 ;; (load-theme 'distinguished t)
@@ -68,7 +75,7 @@
     ("274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default)))
  '(package-selected-packages
    (quote
-    (company magit distinguished-theme spacemacs-theme darktooth-theme darkmine-theme dark-mint-theme dark-krystal-theme darcula-theme cyberpunk-theme alect-themes bubbleberry-theme color-theme-sanityinc-solarized color-theme-solarized color-theme-sanityinc-tomorrow afternoon-theme darkburn-theme soothe-theme badger-theme zenburn-theme auctex-latexmk auctex dracula-theme))))
+    (markdown-mode company magit distinguished-theme spacemacs-theme darktooth-theme darkmine-theme dark-mint-theme dark-krystal-theme darcula-theme cyberpunk-theme alect-themes bubbleberry-theme color-theme-sanityinc-solarized color-theme-solarized color-theme-sanityinc-tomorrow afternoon-theme darkburn-theme soothe-theme badger-theme zenburn-theme auctex-latexmk auctex dracula-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
