@@ -82,3 +82,36 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Ubuntu Mono" :foundry "DAMA" :slant normal :weight normal :height 181 :width normal)))))
+
+;; (setq sql-connection-alist
+;;       '((docker (sql-product 'postgres)
+;;                   (sql-port 5432)
+;;                   (sql-server "localhost")
+;;                   (sql-user "postgres")
+;;                   (sql-password "mysecretpassword")
+;;                   (sql-database "tutorial"))
+;;         (server2 (sql-product 'postgres)
+;;                   (sql-port 5432)
+;;                   (sql-server "localhost")
+;;                   (sql-user "user")
+;;                   (sql-password "password")
+;;                   (sql-database "db2"))))
+
+;; Now, to connect to those server, call the sql-connect function with the input argument is the connection name. You can make some interactive functions for quickly connect to those servers
+
+;; (defun my-sql-docker ()
+;;   (interactive)
+;;   (my-sql-connect 'postgres 'docker))
+
+;; (defun my-sql-server2 ()
+;;   (interactive)
+;;   (my-sql-connect 'postgres 'server2))
+
+;; (defun my-sql-connect (product connection)
+;;   ;; remember to set the sql-product, otherwise, it will fail for the first time
+;;   ;; you call the function
+;;   (setq sql-product product)
+;;   (sql-connect connection))
+
+(require 'sdcv-mode)
+(global-set-key (kbd "C-c d") 'sdcv-search)
