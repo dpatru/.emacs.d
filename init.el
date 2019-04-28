@@ -113,5 +113,6 @@
 ;;   (setq sql-product product)
 ;;   (sql-connect connection))
 
+;; Add dictionary, see http://mbork.pl/2017-01-14_I'm_now_using_the_right_dictionary
 (require 'sdcv-mode)
 (global-set-key (kbd "C-c d") 'sdcv-search)
