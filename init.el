@@ -82,3 +82,53 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Ubuntu Mono" :foundry "DAMA" :slant normal :weight normal :height 181 :width normal)))))
+
+
+;; org mode
+(require 'org)
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
+;; (setq org-agenda-files (list (expand-file-name "~/Github")))
+;; (setq org-agenda-files (list (expand-file-name "~/Github/journal")))
+
+
+(defun org-get-agenda-files-recursively (dir)
+  "Get org agenda files from root DIR."
+  (directory-files-recursively dir "\.org$"))
+(defun org-set-agenda-files-recursively (dir)
+  "Set org-agenda files from root DIR."
+  (setq org-agenda-files 
+	(org-get-agenda-files-recursively dir)))
+(defun org-add-agenda-files-recursively (dir)
+  "Add org-agenda files from root DIR."
+  (nconc org-agenda-files 
+	 (org-get-agenda-files-recursively dir)))
+(setq org-agenda-files nil)
+(org-set-agenda-files-recursively "~/Github")
+(org-add-agenda-files-recursively "~/Dropbox")
+
+;; (defun load-org-agenda-files-recursively (dir) "Find all directories in DIR."
+;;        (add-to-list 'org-agenda-files (directory-files-recursively dir "\.org$")))
+;; (load-org-agenda-files-recursively "~/Github")
+
+;; from  https://stackoverflow.com/a/26548971/268040
+;; Collect all .org from my Org directory and subdirs
+;; (setq org-agenda-file-regexp "\\`[^.].*\\.org\\'") ; default value
+;; (defun load-org-agenda-files-recursively (dir) "Find all directories in DIR."
+;;        (unless (file-directory-p dir) (error "Not a directory `%s'" dir))
+;;        (unless (equal (directory-files dir nil org-agenda-file-regexp t) nil)
+;; 	 (add-to-list 'org-agenda-files dir)) ; if the directory has org files, add it to agenda
+;;        (dolist (file (directory-files dir nil nil t)) ; now test the files in dir
+;; 					;(unless (member file '("." ".."))
+;; 	 (unless (string-prefix-p "." file)
+;; 	   (let ((file (concat dir file "/")))
+;; 	     (add-to-list 'tested file)
+;; 	     (when (file-directory-p file)
+;; 	       (load-org-agenda-files-recursively file))))))
+;; (setq org-agenda-files nil)
+;; (setq tested nil)
+;; (load-org-agenda-files-recursively (expand-file-name "~/Github/")) ; trailing slash required
+
+
+
