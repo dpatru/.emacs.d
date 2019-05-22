@@ -24,10 +24,12 @@
   )
 
 ;; See https://www.lambdacat.com/post-modern-emacs-setup-for-elm/
+;; https://github.com/jcollard/elm-mode/blob/master/README.md
 (require 'elm-mode)
 (require 'flycheck)
 (with-eval-after-load 'flycheck
       '(add-hook 'flycheck-mode-hook #'flycheck-elm-setup))
+(add-to-list 'company-backends 'company-elm)
 
 
 ;; from https://raw.githubusercontent.com/renormalist/emacs-pod-mode/master/pod-mode.el
