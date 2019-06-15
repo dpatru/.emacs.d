@@ -196,19 +196,19 @@
 
 
 
-;; (setq sql-connection-alist
-;;       '((docker (sql-product 'postgres)
-;;                   (sql-port 5432)
-;;                   (sql-server "localhost")
-;;                   (sql-user "postgres")
-;;                   (sql-password "mysecretpassword")
-;;                   (sql-database "tutorial"))
-;;         (server2 (sql-product 'postgres)
-;;                   (sql-port 5432)
-;;                   (sql-server "localhost")
-;;                   (sql-user "user")
-;;                   (sql-password "password")
-;;                   (sql-database "db2"))))
+(setq sql-connection-alist
+      '((docker (sql-product 'postgres)
+                  (sql-port 5433)
+                  (sql-server "localhost")
+                  (sql-user "postgres")
+                  (sql-password "mysecretpassword")
+                  (sql-database "postgres"))
+        (server2 (sql-product 'postgres)
+                  (sql-port 5432)
+                  (sql-server "localhost")
+                  (sql-user "user")
+                  (sql-password "password")
+                  (sql-database "db2"))))
 
 ;; Now, to connect to those server, call the sql-connect function with the input argument is the connection name. You can make some interactive functions for quickly connect to those servers
 
