@@ -229,3 +229,9 @@
 ;; Add dictionary, see http://mbork.pl/2017-01-14_I'm_now_using_the_right_dictionary
 (require 'sdcv-mode)
 (global-set-key (kbd "C-c d") 'sdcv-search)
+
+;; Tell emacs flyspell to use mouse-3 instead of mouse-2. From https://emacs.stackexchange.com/a/32930/21442
+(eval-after-load "flyspell"
+    '(progn
+       (define-key flyspell-mouse-map [down-mouse-3] #'flyspell-correct-word)
+       (define-key flyspell-mouse-map [mouse-3] #'undefined)))
